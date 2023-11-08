@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.home.HomeFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+    <com.daimajia.slider.library.SliderLayout
+        android:id="@+id/banner_slider"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_buttons"
+        android:layout_below="@id/banner_slider"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="4"
+        app:layout_constraintTop_toBottomOf="@id/banner_slider"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/ticket_card"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rv_buttons"
+        app:layout_constraintEnd_toStartOf="@id/park_hours_card"
+        app:cardUseCompatPadding="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content" >
+        <RelativeLayout
+            android:padding="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_ticket_title"
+                android:text="My e-tickets"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_ticket"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/ticket_status"
+                android:layout_below="@id/tv_ticket_title"
+                android:text="There aren't any yet"
+                android:textSize="18sp"
+                android:textColor="#aa919191"
+                android:layout_marginTop="8dp"
+                style="@style/TextAppearance.MaterialComponents.Body2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_below="@id/ticket_status"
+                android:layout_marginTop="6dp"
+                android:textColor="#aadd0000"
+                android:text="Retrieve here"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/park_hours_card"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ticket_card"
+        app:layout_constraintTop_toBottomOf="@id/rv_buttons"
+        app:cardUseCompatPadding="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content" >
+        <RelativeLayout
+            android:padding="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_park_hours_title"
+                android:text="Park hours"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_clock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_park_hours"
+                android:layout_below="@id/tv_park_hours_title"
+                android:textSize="18sp"
+                android:layout_marginTop="8dp"
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                android:text="Today, 13 Feb \n 10am - 5pm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_below="@id/tv_park_hours"
+                android:layout_marginTop="6dp"
+                android:textColor="#aadd0000"
+                android:text="Plan my visit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/tv_upcoming_shows_title"
+        app:layout_constraintTop_toBottomOf="@id/ticket_card"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        style="@style/MaterialAlertDialog.MaterialComponents.Title.Text"
+        android:textColor="@color/black"
+        android:text="Upcoming Shows"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/park_hours_card"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:text="View all"
+        android:textColor="#aadd0000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_upcoming_show"
+        app:layout_constraintTop_toBottomOf="@id/tv_upcoming_shows_title"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="16dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="horizontal"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintStart_toStartOf="@id/park_hours_card"
+        app:layout_constraintEnd_toEndOf="@id/park_hours_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.core.widget.NestedScrollView>
